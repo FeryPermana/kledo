@@ -1,0 +1,208 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Your super  ApplicationAPI",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/employees": {
+            "post": {
+                "tags": [
+                    "employee"
+                ],
+                "summary": "create new employee",
+                "description": "create new employee",
+                "operationId": "postEmployee",
+                "requestBody": {
+                    "description": "required field",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "ferry Permana"
+                                    },
+                                    "salary": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "4000000"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Wrong field employee",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "employee Save Failed!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/overtimes": {
+            "post": {
+                "tags": [
+                    "overtime"
+                ],
+                "summary": "create new overtime",
+                "description": "create new overtime",
+                "operationId": "postOvertime",
+                "requestBody": {
+                    "description": "required field",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "employee_id": {
+                                        "type": "integer",
+                                        "format": "number",
+                                        "example": "1"
+                                    },
+                                    "date": {
+                                        "type": "date",
+                                        "format": "text",
+                                        "example": "2022-06-26"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Wrong field overtime",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "overtime Save Failed!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/overtimes-pays/calculate": {
+            "post": {
+                "tags": [
+                    "overtime"
+                ],
+                "summary": "calculate overtime",
+                "description": "calculate overtime",
+                "operationId": "postOvertime",
+                "responses": {
+                    "400": {
+                        "description": "Wrong field overtime",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "overtime Save Failed!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/{setting}": {
+            "patch": {
+                "tags": [
+                    "setting"
+                ],
+                "summary": "update setting",
+                "description": "update setting",
+                "operationId": "updateSetting",
+                "requestBody": {
+                    "description": "required field",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "overtime_method"
+                                    },
+                                    "value": {
+                                        "type": "integer",
+                                        "format": "number",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Wrong field setting",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "setting Save Failed!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "passport": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://localhost/oauth/authorize",
+                        "tokenUrl": "http://localhost/oauth/token",
+                        "refreshUrl": "http://localhost/token/refresh",
+                        "scopes": []
+                    }
+                }
+            }
+        }
+    }
+}
